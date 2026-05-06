@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>PH101: Function 1 - Assessment</title>
+    <title>PH101: Domain 01 - Assessment</title>
     <style>
         * { box-sizing: border-box; }
         body, html { margin: 0; padding: 0; width: 100%; height: 100%; background-color: #0b1e2d; font-family: 'Segoe UI', sans-serif; overflow: hidden; }
@@ -29,12 +29,12 @@
             background-position: center;
         }
 
-        /* MISSION TEXT BOX */
+        /* MISSION TEXT: Vague & Narrative Driven */
         .mission-text {
             position: absolute;
             top: 20px;
             left: 20px;
-            background: rgba(11, 30, 45, 0.9);
+            background: rgba(11, 30, 45, 0.95);
             border: 2px solid #00d2ff;
             padding: 20px;
             color: #fff;
@@ -48,19 +48,21 @@
             margin: 0 0 10px 0; 
             font-family: 'Courier New', Courier, monospace; 
             color: #00d2ff; 
-            text-transform: uppercase;
+            text-transform: uppercase; 
             font-size: 1.1rem;
+            letter-spacing: 1px;
         }
 
-        /* THE HOTSPOT: Positioned over the Verification Terminal */
-        .hotspot {
-            position: absolute;
-            top: 60%;
-            left: 55%;
-            width: 25%;
-            height: 30%;
-            cursor: pointer;
-            /* border: 1px dashed rgba(0, 210, 255, 0.5); /* Uncomment to see hotspot for testing */
+        /* HOTSPOTS: "Invisible" until hovered to create challenge */
+        .hotspot { 
+            position: absolute; 
+            cursor: pointer; 
+            border: 1px solid transparent; 
+            transition: 0.3s; 
+        }
+        .hotspot:hover { 
+            border: 1px dashed rgba(0, 210, 255, 0.5); 
+            background: rgba(0, 210, 255, 0.05); 
         }
 
         /* MODAL STYLING */
@@ -79,18 +81,15 @@
             text-align: center;
             border-radius: 12px;
             color: #fff;
-            box-shadow: 0 0 30px rgba(0, 0, 0, 0.8);
+            box-shadow: 0 0 40px rgba(0, 0, 0, 0.9);
         }
 
-        .modal h2 { font-family: 'Courier New', Courier, monospace; color: #00d2ff; margin-top: 0; }
-        input { background: #1a3a5a; border: 1px solid #00d2ff; color: #fff; padding: 12px; width: 80%; text-align: center; margin: 15px 0; font-size: 1.1rem; }
-        button { background: #00d2ff; color: #0b1e2d; border: none; padding: 12px 30px; font-weight: bold; cursor: pointer; border-radius: 4px; text-transform: uppercase; }
+        .modal h2 { font-family: 'Courier New', Courier, monospace; color: #00d2ff; margin-top: 0; text-transform: uppercase; font-size: 1.2rem; }
+        input { background: #1a3a5a; border: 1px solid #00d2ff; color: #fff; padding: 12px; width: 80%; text-align: center; margin: 15px 0; font-size: 1.1rem; border-radius: 4px; }
+        button { background: #00d2ff; color: #0b1e2d; border: none; padding: 12px 30px; font-weight: bold; cursor: pointer; border-radius: 4px; text-transform: uppercase; transition: 0.2s; }
+        button:hover { background: #fff; }
 
-        .overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 90; }
-
-        @media (max-width: 768px) {
-            .mission-text { width: 90%; left: 5%; font-size: 0.85rem; padding: 15px; }
-        }
+        .overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 90; }
     </style>
 </head>
 <body>
@@ -100,24 +99,54 @@
         
         <div class="mission-text">
             <h3>[DOMAIN_01: ASSESSMENT]</h3>
-            The "Assessment" function requires monitoring the health of the population to identify community problems. A cluster of illness has been detected on the map.
+            The 101 Protocol is stagnant. We are receiving a massive influx of community data, but the signal is buried.
             <br><br>
-            <strong>Navigator:</strong> Analyze the Verification Terminal to confirm the cluster location. <br>
-            <strong>Cluemaster:</strong> Prepare to log the first Core Function Key once the data is verified.
+            <strong>Navigator:</strong> Filter the environmental and demographic streams. Isolate the primary anomaly to stabilize the Hub. <br>
+            <strong>Cluemaster:</strong> Monitor the findings. Not all data is actionable. Record only the verified Core Function Key.
         </div>
 
-        <div class="hotspot" onclick="openModal('data-verify')"></div>
+        <div class="hotspot" style="top: 10%; left: 30%; width: 35%; height: 35%;" onclick="openModal('map-info')"></div>
+        <div class="hotspot" style="top: 60%; left: 55%; width: 25%; height: 30%;" onclick="openModal('data-verify')"></div>
+
+        <div class="hotspot" style="top: 65%; left: 3%; width: 20%; height: 15%;" onclick="openModal('decoy-air')"></div>
+        <div class="hotspot" style="top: 45%; left: 81%; width: 16%; height: 20%;" onclick="openModal('decoy-age')"></div>
+        <div class="hotspot" style="top: 80%; left: 25%; width: 12%; height: 12%;" onclick="openModal('decoy-note')"></div>
 
     </div>
 </div>
 
 <div class="overlay" id="overlay"></div>
+
+<div class="modal" id="map-info">
+    <h2>COMMUNITY HEALTH MAP</h2>
+    <p>Spatial analysis confirms a localized cluster in the <strong>West District</strong>. Cross-reference this sector with the physical verification logs on the terminal.</p>
+    <button onclick="closeModal()">RESUME ASSESSMENT</button>
+</div>
+
 <div class="modal" id="data-verify">
     <h2>SYSTEM VERIFICATION</h2>
-    <p>Identify the high-risk <strong>Zip Code</strong> from the assessment monitors to reveal the core function key.</p>
-    <input type="text" id="passcode" placeholder="ENTER ZIP CODE">
+    <p>Identify the specific 5-digit <strong>Assessment Code</strong> from the localized cluster to verify the Core Function.</p>
+    <input type="text" id="passcode" placeholder="ENTER CODE">
     <br>
-    <button onclick="checkAnswer()">VERIFY ASSESSMENT</button>
+    <button onclick="checkAnswer()">VERIFY DATA</button>
+</div>
+
+<div class="modal" id="decoy-air">
+    <h2>ENVIRONMENTAL STATUS</h2>
+    <p>AQI: 42 (Good). Particulate matter within standard threshold. The anomaly is not atmospheric; environmental inhalation is ruled out.</p>
+    <button onclick="closeModal()">FILTER DATA</button>
+</div>
+
+<div class="modal" id="decoy-age">
+    <h2>DEMOGRAPHIC OVERVIEW</h2>
+    <p>Data indicates even distribution across all age brackets (12% to 28% variance). No specific demographic vulnerability is driving this event.</p>
+    <button onclick="closeModal()">FILTER DATA</button>
+</div>
+
+<div class="modal" id="decoy-note">
+    <h2>HANDWRITTEN LOG</h2>
+    <p>"Check the red sector... verification requires the primary scan..." <br><br> The rest of the ink is water-damaged. You'll need the digital terminal.</p>
+    <button onclick="closeModal()">FILTER DATA</button>
 </div>
 
 <script>
@@ -126,15 +155,20 @@
         document.getElementById('overlay').style.display = 'block';
     }
 
+    function closeModal() {
+        const modals = document.querySelectorAll('.modal');
+        modals.forEach(m => m.style.display = 'none');
+        document.getElementById('overlay').style.display = 'none';
+    }
+
     function checkAnswer() {
         const val = document.getElementById('passcode').value.trim();
-        
-        // Answer based on your room1.png image
+        // The signal is 48202 (as seen on your terminal image)
         if (val === '48202') {
-            alert("ASSESSMENT SUCCESSFUL. \n\nCore Function Key: INSIGHT");
+            alert("ASSESSMENT VERIFIED. \n\nCore Function Key: INSIGHT");
             location.href = 'room2.html';
         } else {
-            alert("ACCESS DENIED: Data mismatch. Locate the highlighted zip code on the verification terminal.");
+            alert("DATA CORRUPTED: Verification mismatch. Ensure you are filtering for the localized geographic cluster.");
         }
     }
 </script>
