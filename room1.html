@@ -1,1 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>PH101: Domain 01 - Assessment</title>
+    <style>
+        * { box-sizing: border-box; }
+        body, html { margin: 0; padding: 0; width: 100%; height: 100%; background-color: #0b1e2d; font-family: 'Segoe UI', sans-serif; overflow: hidden; }
 
+        .game-wrapper {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #000;
+        }
+
+        .background-container {
+            position: relative;
+            width: 100%;
+            max-width: 1200px;
+            aspect-ratio: 16 / 9;
+            background-image: url('room1.png'); 
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        /* MISSION TEXT BOX */
+        .mission-text {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: rgba(11, 30, 45, 0.9);
+            border: 2px solid #00d2ff;
+            padding: 20px;
+            color: #fff;
+            width: 360px;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0, 210, 255, 0.3);
+            z-index: 10;
+        }
+
+        .mission-text h3 { 
+            margin: 0 0 10px 0; 
+            font-family: 'Courier New', Courier, monospace; 
+            color: #00d2ff; 
+            text-transform: uppercase;
+            font-size: 1.1rem;
+        }
+
+        /* THE HOTSPOT: Positioned over the Verification Terminal */
+        .hotspot {
+            position: absolute;
+            top: 60%;
+            left: 55%;
+            width: 25%;
+            height: 30%;
+            cursor: pointer;
+            /* border: 1px dashed rgba(0, 210, 255, 0.5); /* Uncomment to see hotspot for testing */
+        }
+
+        /* MODAL STYLING */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #0b1e2d;
+            border: 3px solid #00d2ff;
+            padding: 30px;
+            z-index: 100;
+            width: 90%;
+            max-width: 450px;
+            text-align: center;
+            border-radius: 12px;
+            color: #fff;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.8);
+        }
+
+        .modal h2 { font-family: 'Courier New', Courier, monospace; color: #00d2ff; margin-top: 0; }
+        input { background: #1a3a5a; border: 1px solid #00d2ff; color: #fff; padding: 12px; width: 80%; text-align: center; margin: 15px 0; font-size: 1.1rem; }
+        button { background: #00d2ff; color: #0b1e2d; border: none; padding: 12px 30px; font-weight: bold; cursor: pointer; border-radius: 4px; text-transform: uppercase; }
+
+        .overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 90; }
+
+        @media (max-width: 768px) {
+            .mission-text { width: 90%; left: 5%; font-size: 0.85rem; padding: 15px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="game-wrapper">
+    <div class="background-container">
+        
+        <div class="mission-text">
+            <h3>[DOMAIN_01: ASSESSMENT]</h3>
+            The "Assessment" function requires monitoring the health of the population to identify community problems. A cluster of illness has been detected on the map.
+            <br><br>
+            <strong>Navigator:</strong> Analyze the Verification Terminal to confirm the cluster location. <br>
+            <strong>Cluemaster:</strong> Prepare to log the first Core Function Key once the data is verified.
+        </div>
+
+        <div class="hotspot" onclick="openModal('data-verify')"></div>
+
+    </div>
+</div>
+
+<div class="overlay" id="overlay"></div>
+<div class="modal" id="data-verify">
+    <h2>SYSTEM VERIFICATION</h2>
+    <p>Identify the high-risk <strong>Zip Code</strong> from the assessment monitors to reveal the core function key.</p>
+    <input type="text" id="passcode" placeholder="ENTER ZIP CODE">
+    <br>
+    <button onclick="checkAnswer()">VERIFY ASSESSMENT</button>
+</div>
+
+<script>
+    function openModal(id) {
+        document.getElementById(id).style.display = 'block';
+        document.getElementById('overlay').style.display = 'block';
+    }
+
+    function checkAnswer() {
+        const val = document.getElementById('passcode').value.trim();
+        
+        // Answer based on your room1.png image
+        if (val === '48202') {
+            alert("ASSESSMENT SUCCESSFUL. \n\nCore Function Key: INSIGHT");
+            location.href = 'room2.html';
+        } else {
+            alert("ACCESS DENIED: Data mismatch. Locate the highlighted zip code on the verification terminal.");
+        }
+    }
+</script>
+
+</body>
+</html>
