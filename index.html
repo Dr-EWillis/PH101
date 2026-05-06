@@ -1,1 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Public Health 101: The Foundation</title>
+    <style>
+        * { box-sizing: border-box; }
+        
+        body, html { 
+            margin: 0; padding: 0; min-height: 100%; width: 100%; 
+            background-color: #0b1e2d; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            color: #fff; overflow-y: auto; 
+            display: flex; align-items: center; justify-content: center;
+        }
 
+        .start-container {
+            width: 100%;
+            max-width: 850px;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        /* TITLE STYLING */
+        h1 { 
+            color: #00d2ff; 
+            font-family: 'Courier New', Courier, monospace; 
+            letter-spacing: 3px; 
+            text-transform: uppercase;
+            font-size: 2rem;
+            margin-bottom: 10px;
+            text-shadow: 0 0 10px rgba(0, 210, 255, 0.5);
+        }
+
+        .objective-text {
+            color: #8da9c4;
+            font-style: italic;
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+        }
+
+        /* THE BRIEFING BOX: Navy background with Cyan border */
+        .briefing-box {
+            background: rgba(0, 210, 255, 0.05);
+            border: 2px solid #00d2ff; 
+            padding: 35px;
+            margin: 0 auto 40px auto;
+            border-radius: 8px;
+            text-align: left; 
+            box-shadow: 0 0 20px rgba(0, 210, 255, 0.2); 
+        }
+
+        h2 { 
+            color: #00d2ff; 
+            font-family: 'Courier New', Courier, monospace; 
+            font-size: 1.2rem; 
+            margin-top: 30px; 
+            border-bottom: 1px solid rgba(0, 210, 255, 0.2); 
+            padding-bottom: 8px;
+            text-transform: uppercase;
+        }
+
+        h2:first-child { margin-top: 0; }
+        
+        p, li { line-height: 1.7; color: #e0e0e0; font-size: 1.05rem; }
+        ul { padding-left: 20px; }
+        li { margin-bottom: 12px; }
+
+        .role-tag {
+            font-weight: bold;
+            color: #00d2ff;
+            font-family: 'Courier New', Courier, monospace;
+            text-transform: uppercase;
+            display: block;
+            margin-bottom: 4px;
+            font-size: 1.1rem;
+        }
+
+        .role-desc {
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        /* BUTTON STYLING */
+        button.start-btn {
+            background: #00d2ff;
+            color: #0b1e2d;
+            border: none;
+            padding: 22px 60px;
+            font-family: 'Courier New', Courier, monospace; 
+            font-size: 1.3rem;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            box-shadow: 0 5px 15px rgba(0, 210, 255, 0.2);
+        }
+
+        button.start-btn:hover {
+            background: #fff;
+            box-shadow: 0 0 25px #fff;
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 600px) {
+            h1 { font-size: 1.5rem; }
+            .briefing-box { padding: 25px; }
+            button.start-btn { width: 100%; padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="start-container">
+    <h1>MISSION BRIEFING: PUBLIC HEALTH 101</h1>
+    <p class="objective-text">OBJECTIVE: Secure the Three Core Functions to protect community safety.</p>
+
+    <div class="briefing-box">
+        <h2>🏛️ The Strategic Context</h2>
+        <p>Public health is the <strong>invisible shield</strong> that allows a community to thrive. While healthcare treats the individual in a clinic, public health focuses on the environment, the system, and the entire population.</p>
+        <p>To succeed, you must operationalize the three foundational <strong>Core Domains</strong>: Assessment, Policy Development, and Assurance.</p>
+
+        <h2>🎮 The Mission Domains</h2>
+        <ul>
+            <li><strong>Domain 01: Assessment (The Intelligence Hub):</strong> You must analyze community data to identify trends before they reach a crisis point.</li>
+            <li><strong>Domain 02: Policy Development (The Strategy Suite):</strong> You must develop evidence-based plans and laws that prioritize community-wide prevention.</li>
+            <li><strong>Domain 03: Assurance (The Access Bureau):</strong> You must ensure the system is accountable and that all community members have access to necessary services.</li>
+        </ul>
+
+        <h2>👥 Assigned Roles</h2>
+        <p>Designate these roles within your group before initializing the mission:</p>
+        
+        <span class="role-desc">
+            <span class="role-tag">The Navigator</span>
+            Shares their screen and drives the mission, exploring the Domains for hidden data and clues.
+        </span>
+
+        <span class="role-desc">
+            <span class="role-tag">The Cluemaster</span>
+            Maintains the <strong>Core Function Log</strong>. You must record each Strategic Pillar word as it is revealed. All three are required to unlock the final protocol.
+        </span>
+    </div>
+
+    <button class="start-btn" onclick="location.href='room1.html'">Initialize Mission</button>
+</div>
+
+</body>
+</html>
