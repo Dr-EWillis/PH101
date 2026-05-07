@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>PH101: Function 03 - Assurance</title>
+    <title>PH101: Function 3 - Assurance</title>
     <style>
         * { box-sizing: border-box; }
         body, html { margin: 0; padding: 0; width: 100%; height: 100%; background-color: #0b1e2d; font-family: 'Segoe UI', sans-serif; overflow: hidden; }
@@ -29,6 +29,7 @@
             background-position: center;
         }
 
+        /* MISSION TEXT: Simple and Narrative-Focused */
         .mission-text {
             position: absolute;
             top: 20px;
@@ -81,14 +82,14 @@
     <div class="background-container">
         
         <div class="mission-text">
-            <h3>[FUNCTION_03: ASSURANCE]</h3>
-            Assurance proves the system is working. Most of this room shows our services are running normally, but we need the final result.
+            <h3>[FUNCTION 3: ASSURANCE]</h3>
+            The work is ongoing, but the 101 Protocol requires proof of success. 
             <br><br>
-            <strong>Navigator:</strong> Ignore the "Normal" service logs. Find the one result that shows our work is making a difference. <br><br>
-            <strong>Cluemaster:</strong> Identify the single value that represents the success of the system.
+            <strong>Navigator:</strong> Being busy is just "Normal" for this department. Look past the daily paperwork to find the proof that our work is making a difference. <br><br>
+            <strong>Cluemaster:</strong> Monitor the investigation. Only the final result of our work will finish the Protocol.
         </div>
 
-        <div class="hotspot" style="top: 48%; left: 21%; width: 15%; height: 35%;" onclick="openModal('signal-welcome')"></div>
+        <div class="hotspot" style="top: 48%; left: 21%; width: 15%; height: 35%;" onclick="openModal('signal-note')"></div>
         
         <div class="hotspot" style="top: 29%; left: 37%; width: 6%; height: 10%;" onclick="openModal('assurance-verify')"></div>
 
@@ -103,36 +104,36 @@
 
 <div class="overlay" id="overlay"></div>
 
-<div class="modal" id="signal-welcome">
-    <h2>SYSTEM STATUS LOG</h2>
-    <p>A note clipped to the side of the sign reads:<br><br>
-    "Helping people and providing services is <strong>Normal</strong> operations. The final function key is the community <strong>IMPACT</strong> we achieve."</p>
-    <button onclick="closeModal()">IGNORE AND CONTINUE</button>
+<div class="modal" id="signal-note">
+    <h2>SYSTEM STATUS</h2>
+    <p>A note clipped to the desk reads:<br><br>
+    "Answering the phones and seeing clients is normal, daily business. The real key is the ____ we have on the community."</p>
+    <button onclick="closeModal()">CONTINUE LOOKING</button>
 </div>
 
 <div class="modal" id="assurance-verify">
     <h2>FINAL VERIFICATION</h2>
-    <p>Enter the <strong>Final Result</strong> identified in the system status logs.</p>
+    <p>Enter the <strong>Final Result</strong> that proves the public health system is working.</p>
     <input type="text" id="passcode" placeholder="ENTER RESULT">
     <br>
     <button onclick="checkAnswer()">VERIFY ASSURANCE</button>
 </div>
 
 <div class="modal" id="decoy-dashboard">
-    <h2>SERVICE DASHBOARD</h2>
-    <p>Total Referrals: 1,248. <br>Wait Time: 2.4 days.<br><br><strong>STATUS: NORMAL.</strong> This data shows we are busy, but it isn't the final result.</p>
+    <h2>DAILY DASHBOARD</h2>
+    <p>Total Referrals: 1,248 | Active Clients: 842.<br><br><strong>STATUS: NORMAL.</strong> This data shows we are busy, but being busy isn't a result. Keep looking.</p>
     <button onclick="closeModal()">IGNORE AND CONTINUE</button>
 </div>
 
 <div class="modal" id="decoy-clipboard">
-    <h2>CLIENT STATUS</h2>
-    <p>Client: Maria S.<br>Status: Successfully Linked.<br><br><strong>STATUS: NORMAL.</strong> Linking a client is a baseline service, not the final key.</p>
+    <h2>CLIENT LOG</h2>
+    <p>Client: Maria S.<br>Status: Successfully Linked to Services.<br><br> Helping Maria is our daily job. It is a baseline service, not the final key.</p>
     <button onclick="closeModal()">IGNORE AND CONTINUE</button>
 </div>
 
 <div class="modal" id="decoy-values">
-    <h2>CORE VALUES</h2>
-    <p>Access, Equity, Respect, Integrity, Collaboration.<br><br>These guide how we work, but they are not the success metric.</p>
+    <h2>OUR VALUES</h2>
+    <p>Access, Equity, Respect, Integrity, Collaboration.<br><br>These guide how we work, but they are not the success metric we need to finish the Protocol.</p>
     <button onclick="closeModal()">IGNORE AND CONTINUE</button>
 </div>
 
@@ -150,6 +151,7 @@
 
     function checkAnswer() {
         const val = document.getElementById('passcode').value.trim().toUpperCase();
+        // The result is IMPACT
         if (val === 'IMPACT') {
             alert("ASSURANCE VERIFIED. \n\nCore Function Key: IMPACT");
             location.href = 'final.html';
