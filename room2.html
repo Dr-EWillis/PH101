@@ -1,1 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>PH101: Function 2 - Policy Development</title>
+    <style>
+        * { box-sizing: border-box; }
+        body, html { margin: 0; padding: 0; width: 100%; height: 100%; background-color: #0b1e2d; font-family: 'Segoe UI', sans-serif; overflow: hidden; }
 
+        .game-wrapper {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #000;
+        }
+
+        .background-container {
+            position: relative;
+            width: 100%;
+            max-width: 1200px;
+            aspect-ratio: 16 / 9;
+            background-image: url('room2.png'); 
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        .mission-text {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: rgba(11, 30, 45, 0.95);
+            border: 2px solid #00d2ff;
+            padding: 20px;
+            color: #fff;
+            width: 360px;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0, 210, 255, 0.3);
+            z-index: 10;
+        }
+
+        .mission-text h3 { margin: 0 0 10px 0; font-family: 'Courier New', Courier, monospace; color: #00d2ff; text-transform: uppercase; font-size: 1.1rem; }
+
+        /* INVISIBLE HOTSPOTS */
+        .hotspot { 
+            position: absolute; 
+            cursor: pointer; 
+            border: 1px solid transparent; 
+        }
+        .hotspot:hover { 
+            border: 1px solid transparent; /* No visible box on hover */
+            background: none; 
+        }
+
+        /* MODAL STYLING */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #0b1e2d;
+            border: 3px solid #00d2ff;
+            padding: 30px;
+            z-index: 100;
+            width: 90%;
+            max-width: 450px;
+            text-align: center;
+            border-radius: 12px;
+            color: #fff;
+            box-shadow: 0 0 40px rgba(0, 0, 0, 0.9);
+        }
+
+        .modal h2 { font-family: 'Courier New', Courier, monospace; color: #00d2ff; margin-top: 0; text-transform: uppercase; font-size: 1.2rem; }
+        input { background: #1a3a5a; border: 1px solid #00d2ff; color: #fff; padding: 12px; width: 80%; text-align: center; margin: 15px 0; font-size: 1.1rem; border-radius: 4px; }
+        button { background: #00d2ff; color: #0b1e2d; border: none; padding: 12px 30px; font-weight: bold; cursor: pointer; border-radius: 4px; text-transform: uppercase; transition: 0.2s; }
+        button:hover { background: #fff; }
+
+        .overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 90; }
+    </style>
+</head>
+<body>
+
+<div class="game-wrapper">
+    <div class="background-container">
+        
+        <div class="mission-text">
+            <h3>[DOMAIN_02: POLICY]</h3>
+            The Strategy Suite is filled with reports showing compliance. You must find the fundamental value driving this community’s legislative plan.
+            <br><br>
+            <strong>Navigator:</strong> Ignore the "On Track" distractions. Find the core principle of the Strategy Suite to advance. <br><br>
+            <strong>Cluemaster:</strong> Verify the Policy Key. Only the central driver of the framework will open the path to Assurance.
+        </div>
+
+        <div class="hotspot" style="top: 4%; left: 91%; width: 8%; height: 25%;" onclick="openModal('signal-poster')"></div>
+        <div class="hotspot" style="top: 48%; left: 71%; width: 25%; height: 25%;" onclick="openModal('policy-verify')"></div>
+
+        <div class="hotspot" style="top: 50%; left: 0%; width: 27%; height: 30%;" onclick="openModal('decoy-tablet')"></div>
+        <div class="hotspot" style="top: 10%; left: 33%; width: 38%; height: 35%;" onclick="openModal('decoy-screen')"></div>
+        <div class="hotspot" style="top: 10%; left: 16%; width: 15%; height: 25%;" onclick="openModal('decoy-cycle')"></div>
+
+    </div>
+</div>
+
+<div class="overlay" id="overlay"></div>
+
+<div class="modal" id="signal-poster">
+    <h2>CORE PRINCIPLE</h2>
+    <p>A framed priority list on the wall highlights the mission's non-negotiable driver: <strong>EQUITY, ACCESS, and OPPORTUNITY.</strong></p>
+    <button onclick="closeModal()">IGNORE AND CONTINUE</button>
+</div>
+
+<div class="modal" id="policy-verify">
+    <h2>STRATEGY VERIFICATION</h2>
+    <p>Enter the <strong>Primary Function Key</strong> revealed in the suite's core priority framework.</p>
+    <input type="text" id="passcode" placeholder="ENTER KEY">
+    <br>
+    <button onclick="checkAnswer()">VERIFY POLICY</button>
+</div>
+
+<div class="modal" id="decoy-tablet">
+    <h2>INDICATOR STATUS</h2>
+    <p>Current health index: 89%. Access to Care: 92%. <br><br> <strong>STATUS: ON TRACK.</strong> This is baseline operational data, not a function key.</p>
+    <button onclick="closeModal()">IGNORE AND CONTINUE</button>
+</div>
+
+<div class="modal" id="decoy-screen">
+    <h2>LEGISLATIVE TIMELINE</h2>
+    <p>The "Healthy Communities Act" is currently in Committee Review. Implementation is scheduled for January 2027. <br><br> <strong>STATUS: COMPLIANT.</strong> This is standard administrative noise.</p>
+    <button onclick="closeModal()">IGNORE AND CONTINUE</button>
+</div>
+
+<div class="modal" id="decoy-cycle">
+    <h2>DEVELOPMENT CYCLE</h2>
+    <p>The framework follows: Assess, Develop, Engage, Implement, Evaluate. <br><br> This is an educational reference. It is not the key.</p>
+    <button onclick="closeModal()">IGNORE AND CONTINUE</button>
+</div>
+
+<script>
+    function openModal(id) {
+        document.getElementById(id).style.display = 'block';
+        document.getElementById('overlay').style.display = 'block';
+    }
+
+    function closeModal() {
+        const modals = document.querySelectorAll('.modal');
+        modals.forEach(m => m.style.display = 'none');
+        document.getElementById('overlay').style.display = 'none';
+    }
+
+    function checkAnswer() {
+        const val = document.getElementById('passcode').value.trim().toUpperCase();
+        if (val === 'EQUITY') {
+            alert("POLICY DEVELOPED. \n\nCore Function Key: EQUITY");
+            location.href = 'room3.html';
+        } else {
+            alert("SYSTEM ERROR: Invalid Policy Key. Search for the core principle driving the community strategy.");
+        }
+    }
+</script>
+
+</body>
+</html>
