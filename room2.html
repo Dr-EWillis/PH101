@@ -45,18 +45,9 @@
 
         .mission-text h3 { margin: 0 0 10px 0; font-family: 'Courier New', Courier, monospace; color: #00d2ff; text-transform: uppercase; font-size: 1.1rem; }
 
-        /* INVISIBLE HOTSPOTS */
-        .hotspot { 
-            position: absolute; 
-            cursor: pointer; 
-            border: 1px solid transparent; 
-        }
-        .hotspot:hover { 
-            border: 1px solid transparent; /* No visible box on hover */
-            background: none; 
-        }
+        .hotspot { position: absolute; cursor: pointer; border: 1px solid transparent; }
+        .hotspot:hover { border: 1px solid transparent; background: none; }
 
-        /* MODAL STYLING */
         .modal {
             display: none;
             position: fixed;
@@ -78,8 +69,7 @@
         .modal h2 { font-family: 'Courier New', Courier, monospace; color: #00d2ff; margin-top: 0; text-transform: uppercase; font-size: 1.2rem; }
         input { background: #1a3a5a; border: 1px solid #00d2ff; color: #fff; padding: 12px; width: 80%; text-align: center; margin: 15px 0; font-size: 1.1rem; border-radius: 4px; }
         button { background: #00d2ff; color: #0b1e2d; border: none; padding: 12px 30px; font-weight: bold; cursor: pointer; border-radius: 4px; text-transform: uppercase; transition: 0.2s; }
-        button:hover { background: #fff; }
-
+        
         .overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 90; }
     </style>
 </head>
@@ -90,53 +80,54 @@
         
         <div class="mission-text">
             <h3>[DOMAIN_02: POLICY]</h3>
-            The Strategy Suite is filled with reports showing compliance. You must find the fundamental value driving this community’s legislative plan.
+            Policy development is the process of turning data into community-wide action. You must identify the specific gap in the community's health status to authorize the legislative draft.
             <br><br>
-            <strong>Navigator:</strong> Ignore the "On Track" distractions. Find the core principle of the Strategy Suite to advance. <br><br>
-            <strong>Cluemaster:</strong> Verify the Policy Key. Only the central driver of the framework will open the path to Assurance.
+            <strong>Navigator:</strong> Compare the <em>Well-Being Indicators</em> with the <em>Legislative Goals</em>. Find the missing link. <br><br>
+            <strong>Cluemaster:</strong> Identify the specific indicator that this policy is designed to improve. 
         </div>
 
-        <div class="hotspot" style="top: 4%; left: 91%; width: 8%; height: 25%;" onclick="openModal('signal-poster')"></div>
+        <div class="hotspot" style="top: 50%; left: 0%; width: 25%; height: 35%;" onclick="openModal('data-indicators')"></div>
+        
+        <div class="hotspot" style="top: 5%; left: 33%; width: 40%; height: 35%;" onclick="openModal('policy-screen')"></div>
+
         <div class="hotspot" style="top: 48%; left: 71%; width: 25%; height: 25%;" onclick="openModal('policy-verify')"></div>
 
-        <div class="hotspot" style="top: 50%; left: 0%; width: 27%; height: 30%;" onclick="openModal('decoy-tablet')"></div>
-        <div class="hotspot" style="top: 10%; left: 33%; width: 38%; height: 35%;" onclick="openModal('decoy-screen')"></div>
-        <div class="hotspot" style="top: 10%; left: 16%; width: 15%; height: 25%;" onclick="openModal('decoy-cycle')"></div>
+        <div class="hotspot" style="top: 10%; left: 16%; width: 14%; height: 23%;" onclick="openModal('decoy-whiteboard')"></div>
 
     </div>
 </div>
 
 <div class="overlay" id="overlay"></div>
 
-<div class="modal" id="signal-poster">
-    <h2>CORE PRINCIPLE</h2>
-    <p>A framed priority list on the wall highlights the mission's non-negotiable driver: <strong>EQUITY, ACCESS, and OPPORTUNITY.</strong></p>
+<div class="modal" id="data-indicators">
+    <h2>WELL-BEING INDICATORS</h2>
+    <p>Current Assessment Results:<br>
+    • Access to Care: 92%<br>
+    • Chronic Disease Prev: 91%<br>
+    • Environmental Quality: 93%<br>
+    • <strong>Health Equity Index: 89%</strong></p>
+    <p style="font-size: 0.85rem; color: #8da9c4;">One indicator is currently falling below the community target of 90%.</p>
+    <button onclick="closeModal()">IGNORE AND CONTINUE</button>
+</div>
+
+<div class="modal" id="policy-screen">
+    <h2>LEGISLATIVE GOAL</h2>
+    <p><strong>Proposed Bill: Healthy Communities Act (HCA)</strong><br><br>
+    "This legislation is strategically drafted to prioritize and advance the <strong>lowest performing health indicator</strong> identified in the 2026 Assessment."</p>
     <button onclick="closeModal()">IGNORE AND CONTINUE</button>
 </div>
 
 <div class="modal" id="policy-verify">
     <h2>STRATEGY VERIFICATION</h2>
-    <p>Enter the <strong>Primary Function Key</strong> revealed in the suite's core priority framework.</p>
-    <input type="text" id="passcode" placeholder="ENTER KEY">
+    <p>Based on the assessment data, enter the specific <strong>indicator name</strong> that this policy is designed to improve.</p>
+    <input type="text" id="passcode" placeholder="ENTER INDICATOR NAME">
     <br>
     <button onclick="checkAnswer()">VERIFY POLICY</button>
 </div>
 
-<div class="modal" id="decoy-tablet">
-    <h2>INDICATOR STATUS</h2>
-    <p>Current health index: 89%. Access to Care: 92%. <br><br> <strong>STATUS: ON TRACK.</strong> This is baseline operational data, not a function key.</p>
-    <button onclick="closeModal()">IGNORE AND CONTINUE</button>
-</div>
-
-<div class="modal" id="decoy-screen">
-    <h2>LEGISLATIVE TIMELINE</h2>
-    <p>The "Healthy Communities Act" is currently in Committee Review. Implementation is scheduled for January 2027. <br><br> <strong>STATUS: COMPLIANT.</strong> This is standard administrative noise.</p>
-    <button onclick="closeModal()">IGNORE AND CONTINUE</button>
-</div>
-
-<div class="modal" id="decoy-cycle">
+<div class="modal" id="decoy-whiteboard">
     <h2>DEVELOPMENT CYCLE</h2>
-    <p>The framework follows: Assess, Develop, Engage, Implement, Evaluate. <br><br> This is an educational reference. It is not the key.</p>
+    <p>Assess → Develop → Engage → Implement → Evaluate.<br><br>The cycle is currently in the <strong>Develop</strong> phase. Proceed to verification.</p>
     <button onclick="closeModal()">IGNORE AND CONTINUE</button>
 </div>
 
@@ -154,11 +145,12 @@
 
     function checkAnswer() {
         const val = document.getElementById('passcode').value.trim().toUpperCase();
-        if (val === 'EQUITY') {
-            alert("POLICY DEVELOPED. \n\nCore Function Key: EQUITY");
+        // They should deduce EQUITY from the 89% score on the tablet.
+        if (val.includes('EQUITY')) {
+            alert("POLICY VERIFIED. \n\nCore Function Key: EQUITY");
             location.href = 'room3.html';
         } else {
-            alert("SYSTEM ERROR: Invalid Policy Key. Search for the core principle driving the community strategy.");
+            alert("VERIFICATION FAILED: The entered value does not match the community's primary health gap.");
         }
     }
 </script>
