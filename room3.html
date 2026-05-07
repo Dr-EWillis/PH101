@@ -1,1 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>PH101: Function 03 - Assurance</title>
+    <style>
+        * { box-sizing: border-box; }
+        body, html { margin: 0; padding: 0; width: 100%; height: 100%; background-color: #0b1e2d; font-family: 'Segoe UI', sans-serif; overflow: hidden; }
 
+        .game-wrapper {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #000;
+        }
+
+        .background-container {
+            position: relative;
+            width: 100%;
+            max-width: 1200px;
+            aspect-ratio: 16 / 9;
+            background-image: url('room3.png'); 
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        .mission-text {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: rgba(11, 30, 45, 0.95);
+            border: 2px solid #00d2ff;
+            padding: 20px;
+            color: #fff;
+            width: 320px;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0, 210, 255, 0.3);
+            z-index: 10;
+        }
+
+        .mission-text h3 { margin: 0 0 10px 0; font-family: 'Courier New', Courier, monospace; color: #00d2ff; text-transform: uppercase; font-size: 1.1rem; }
+
+        /* TIGHTER INVISIBLE HOTSPOTS */
+        .hotspot { position: absolute; cursor: pointer; border: 1px solid transparent; }
+        .hotspot:hover { border: 1px solid transparent; background: none; }
+
+        /* MODAL STYLING */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #0b1e2d;
+            border: 3px solid #00d2ff;
+            padding: 30px;
+            z-index: 100;
+            width: 90%;
+            max-width: 420px;
+            text-align: center;
+            border-radius: 12px;
+            color: #fff;
+            box-shadow: 0 0 40px rgba(0, 0, 0, 0.9);
+        }
+
+        .modal h2 { font-family: 'Courier New', Courier, monospace; color: #00d2ff; margin-top: 0; text-transform: uppercase; font-size: 1.2rem; }
+        input { background: #1a3a5a; border: 1px solid #00d2ff; color: #fff; padding: 12px; width: 80%; text-align: center; margin: 15px 0; font-size: 1.1rem; border-radius: 4px; }
+        button { background: #00d2ff; color: #0b1e2d; border: none; padding: 12px 30px; font-weight: bold; cursor: pointer; border-radius: 4px; text-transform: uppercase; }
+        
+        .overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 90; }
+    </style>
+</head>
+<body>
+
+<div class="game-wrapper">
+    <div class="background-container">
+        
+        <div class="mission-text">
+            <h3>[FUNCTION_03: ASSURANCE]</h3>
+            Assurance proves the system is working. Most of this room shows our services are running normally, but we need the final result.
+            <br><br>
+            <strong>Navigator:</strong> Ignore the "Normal" service logs. Find the one result that shows our work is making a difference. <br><br>
+            <strong>Cluemaster:</strong> Identify the single value that represents the success of the system.
+        </div>
+
+        <div class="hotspot" style="top: 48%; left: 21%; width: 15%; height: 35%;" onclick="openModal('signal-welcome')"></div>
+        
+        <div class="hotspot" style="top: 29%; left: 37%; width: 6%; height: 10%;" onclick="openModal('assurance-verify')"></div>
+
+        <div class="hotspot" style="top: 27%; left: 2%; width: 15%; height: 18%;" onclick="openModal('decoy-dashboard')"></div>
+
+        <div class="hotspot" style="top: 66%; left: 51%; width: 28%; height: 30%;" onclick="openModal('decoy-clipboard')"></div>
+
+        <div class="hotspot" style="top: 45%; left: 86%; width: 13%; height: 23%;" onclick="openModal('decoy-values')"></div>
+
+    </div>
+</div>
+
+<div class="overlay" id="overlay"></div>
+
+<div class="modal" id="signal-welcome">
+    <h2>SYSTEM STATUS LOG</h2>
+    <p>A note clipped to the side of the sign reads:<br><br>
+    "Helping people and providing services is <strong>Normal</strong> operations. The final function key is the community <strong>IMPACT</strong> we achieve."</p>
+    <button onclick="closeModal()">IGNORE AND CONTINUE</button>
+</div>
+
+<div class="modal" id="assurance-verify">
+    <h2>FINAL VERIFICATION</h2>
+    <p>Enter the <strong>Final Result</strong> identified in the system status logs.</p>
+    <input type="text" id="passcode" placeholder="ENTER RESULT">
+    <br>
+    <button onclick="checkAnswer()">VERIFY ASSURANCE</button>
+</div>
+
+<div class="modal" id="decoy-dashboard">
+    <h2>SERVICE DASHBOARD</h2>
+    <p>Total Referrals: 1,248. <br>Wait Time: 2.4 days.<br><br><strong>STATUS: NORMAL.</strong> This data shows we are busy, but it isn't the final result.</p>
+    <button onclick="closeModal()">IGNORE AND CONTINUE</button>
+</div>
+
+<div class="modal" id="decoy-clipboard">
+    <h2>CLIENT STATUS</h2>
+    <p>Client: Maria S.<br>Status: Successfully Linked.<br><br><strong>STATUS: NORMAL.</strong> Linking a client is a baseline service, not the final key.</p>
+    <button onclick="closeModal()">IGNORE AND CONTINUE</button>
+</div>
+
+<div class="modal" id="decoy-values">
+    <h2>CORE VALUES</h2>
+    <p>Access, Equity, Respect, Integrity, Collaboration.<br><br>These guide how we work, but they are not the success metric.</p>
+    <button onclick="closeModal()">IGNORE AND CONTINUE</button>
+</div>
+
+<script>
+    function openModal(id) {
+        document.getElementById(id).style.display = 'block';
+        document.getElementById('overlay').style.display = 'block';
+    }
+
+    function closeModal() {
+        const modals = document.querySelectorAll('.modal');
+        modals.forEach(m => m.style.display = 'none');
+        document.getElementById('overlay').style.display = 'none';
+    }
+
+    function checkAnswer() {
+        const val = document.getElementById('passcode').value.trim().toUpperCase();
+        if (val === 'IMPACT') {
+            alert("ASSURANCE VERIFIED. \n\nCore Function Key: IMPACT");
+            location.href = 'final.html';
+        } else {
+            alert("VERIFICATION FAILED: That value does not represent the final success of the system.");
+        }
+    }
+</script>
+
+</body>
+</html>
