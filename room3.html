@@ -1,1 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>PH101: Function 3 - Assurance</title>
+    <style>
+        * { box-sizing: border-box; }
+        body, html { margin: 0; padding: 0; width: 100%; height: 100%; background-color: #0b1e2d; font-family: 'Segoe UI', sans-serif; overflow: hidden; }
 
+        .game-wrapper {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #000;
+        }
+
+        .background-container {
+            position: relative;
+            width: 100%;
+            max-width: 1200px;
+            aspect-ratio: 16 / 9;
+            background-image: url('room3.png'); 
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        .mission-text {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: rgba(11, 30, 45, 0.95);
+            border: 2px solid #00d2ff;
+            padding: 20px;
+            color: #fff;
+            width: 360px;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0, 210, 255, 0.3);
+            z-index: 10;
+        }
+
+        .mission-text h3 { margin: 0 0 10px 0; font-family: 'Courier New', Courier, monospace; color: #00d2ff; text-transform: uppercase; font-size: 1.1rem; }
+
+        /* INVISIBLE HOTSPOTS */
+        .hotspot { position: absolute; cursor: pointer; border: 1px solid transparent; }
+        .hotspot:hover { border: 1px solid transparent; background: none; }
+
+        /* MODAL STYLING */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #0b1e2d;
+            border: 3px solid #00d2ff;
+            padding: 30px;
+            z-index: 100;
+            width: 90%;
+            max-width: 450px;
+            text-align: center;
+            border-radius: 12px;
+            color: #fff;
+            box-shadow: 0 0 40px rgba(0, 0, 0, 0.9);
+        }
+
+        .modal h2 { font-family: 'Courier New', Courier, monospace; color: #00d2ff; margin-top: 0; text-transform: uppercase; font-size: 1.2rem; }
+        input { background: #1a3a5a; border: 1px solid #00d2ff; color: #fff; padding: 12px; width: 80%; text-align: center; margin: 15px 0; font-size: 1.1rem; border-radius: 4px; }
+        button { background: #00d2ff; color: #0b1e2d; border: none; padding: 12px 30px; font-weight: bold; cursor: pointer; border-radius: 4px; text-transform: uppercase; transition: 0.2s; }
+        button:hover { background: #fff; }
+
+        .overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 90; }
+    </style>
+</head>
+<body>
+
+<div class="game-wrapper">
+    <div class="background-container">
+        
+        <div class="mission-text">
+            <h3>[FUNCTION 3: ASSURANCE]</h3>
+            Assurance is the proof that the public health system works. Finding the link between services and the community is the final step.
+            <br><br>
+            <strong>Navigator:</strong> Look for evidence of successful linkage. <br><br>
+            <strong>Cluemaster:</strong> Record the final Function Key. Only the term representing proven results will unlock the Vault.
+        </div>
+
+        <div class="hotspot" style="top: 75%; left: 40%; width: 20%; height: 15%;" onclick="openModal('signal-report')"></div>
+        <div class="hotspot" style="top: 60%; left: 70%; width: 20%; height: 25%;" onclick="openModal('assurance-verify')"></div>
+
+        <div class="hotspot" style="top: 10%; left: 30%; width: 40%; height: 40%;" onclick="openModal('decoy-map')"></div>
+        <div class="hotspot" style="top: 20%; left: 75%; width: 20%; height: 40%;" onclick="openModal('decoy-workforce')"></div>
+        <div class="hotspot" style="top: 60%; left: 5%; width: 25%; height: 30%;" onclick="openModal('decoy-wait')"></div>
+
+    </div>
+</div>
+
+<div class="overlay" id="overlay"></div>
+
+<div class="modal" id="signal-report">
+    <h2>COMMUNITY IMPACT REPORT</h2>
+    <p><strong>Initiative:</strong> Mobile Access Units.<br><br>
+    By linking the hard-to-reach populations directly to services, the system has achieved 100% successful intervention. <br><br>
+    Final outcome recorded: <strong style="color: #00d2ff;">IMPACT</strong></p>
+    <button onclick="closeModal()">IGNORE AND CONTINUE</button>
+</div>
+
+<div class="modal" id="assurance-verify">
+    <h2>ASSURANCE VERIFICATION</h2>
+    <p>Enter the <strong>Final Function Key</strong> representing the results of a successful community linkage.</p>
+    <input type="text" id="passcode" placeholder="ENTER FINAL KEY">
+    <br>
+    <button onclick="checkAnswer()">VERIFY ASSURANCE</button>
+</div>
+
+<div class="modal" id="decoy-map">
+    <h2>NETWORK STATUS</h2>
+    <p>All 14 Community Linkage Points are active. <br><br> <strong>STATUS: BASELINE ACTIVE.</strong> This is operational noise.</p>
+    <button onclick="closeModal()">IGNORE AND CONTINUE</button>
+</div>
+
+<div class="modal" id="decoy-workforce">
+    <h2>WORKFORCE COMPETENCY</h2>
+    <p>Assurance check: 98% of the public health workforce is currently certified and trained. <br><br> <strong>STATUS: COMPLIANT.</strong> Baseline met.</p>
+    <button onclick="closeModal()">IGNORE AND CONTINUE</button>
+</div>
+
+<div class="modal" id="decoy-wait">
+    <h2>SERVICE AVAILABILITY</h2>
+    <p>Clinic wait times are within the standard 20-minute threshold. <br><br> <strong>STATUS: NORMAL.</strong> Standard reporting data.</p>
+    <button onclick="closeModal()">IGNORE AND CONTINUE</button>
+</div>
+
+<script>
+    function openModal(id) {
+        document.getElementById(id).style.display = 'block';
+        document.getElementById('overlay').style.display = 'block';
+    }
+
+    function closeModal() {
+        const modals = document.querySelectorAll('.modal');
+        modals.forEach(m => m.style.display = 'none');
+        document.getElementById('overlay').style.display = 'none';
+    }
+
+    function checkAnswer() {
+        const val = document.getElementById('passcode').value.trim().toUpperCase();
+        if (val === 'IMPACT') {
+            alert("ASSURANCE COMPLETE. \n\nCore Function Key: IMPACT");
+            location.href = 'final.html';
+        } else {
+            alert("VERIFICATION FAILED: Access is only granted to those who identify the proven community result.");
+        }
+    }
+</script>
+
+</body>
+</html>
