@@ -102,7 +102,7 @@
             Assessment is the systematic collection and analysis of data to identify trends, health problems, and specific threats. We are receiving a massive influx of community data, but the signal is buried.
             <br><br>
             <strong>Navigator:</strong> Filter the environmental and demographic data. Identify the geographic outlier. <br><br>
-            <strong>Cluemaster:</strong> Monitor the findings. Not all data is actionable. Record only the verified Core Function Key.
+            <strong>Cluemaster:</strong> Monitor the findings. Not all data is actionable. Record only the verified Core Function Key once the community in need is verified.
         </div>
 
         <div class="hotspot" style="top: 10%; left: 30%; width: 35%; height: 35%;" onclick="openModal('map-info')"></div>
@@ -119,13 +119,13 @@
 
 <div class="modal" id="map-info">
     <h2>COMMUNITY HEALTH MAP</h2>
-    <p>Spatial analysis confirms a localized cluster in the <strong>West District</strong>. Cross-reference this sector with the physical verification logs on the terminal.</p>
-    <button onclick="closeModal()">RESUME ASSESSMENT</button>
+    <p>Analysis confirms a clear spike in respiratory illness in the West District. Cross-reference this neighborhood with the data logs on the terminal.</p>
+    <button onclick="closeModal()">CONTINUE ASSESSMENT</button>
 </div>
 
 <div class="modal" id="data-verify">
-    <h2>SYSTEM VERIFICATION</h2>
-    <p>Identify the specific 5-digit <strong>Assessment Code</strong> from the localized cluster to verify the Core Function.</p>
+    <h2>LATEST DATA FEED</h2>
+    <p>Identify the 5-digit Zip Code belonging to the neighborhood with the highest health need.</p>
     <input type="text" id="passcode" placeholder="ENTER CODE">
     <br>
     <button onclick="checkAnswer()">VERIFY DATA</button>
@@ -139,7 +139,7 @@
 
 <div class="modal" id="decoy-age">
     <h2>DEMOGRAPHIC OVERVIEW</h2>
-    <p>Data indicates even distribution across all age brackets (12% to 28% variance). No specific demographic vulnerability is driving this event.</p>
+    <p>Data indicates even distribution across all age brackets. No specific demographic vulnerability is driving this event.</p>
     <button onclick="closeModal()">FILTER DATA</button>
 </div>
 
