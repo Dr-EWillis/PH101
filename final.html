@@ -36,7 +36,7 @@
         }
 
         /* MAINFRAME AND FINAL CHALLENGE - CENTERED */
-        .mainframe, #final-challenge {
+        .mainframe, #final-challenge, .success-screen {
             width: 90%;
             max-width: 600px;
             padding: 40px;
@@ -84,8 +84,22 @@
         #final-challenge { display: none; }
         .scramble { font-family: 'Courier New', Courier, monospace; font-size: 2rem; color: #00d2ff; letter-spacing: 10px; margin: 20px 0; font-weight: bold; }
         
-        .success-screen { display: none; text-align: center; }
-        .success-screen h2 { color: #00ff88; font-size: 2.5rem; margin-bottom: 10px; text-transform: uppercase;}
+        /* SUCCESS COMPLETION DISPLAY STYLE */
+        .success-screen { display: none; border-color: #00ff88; box-shadow: 0 0 30px rgba(0, 255, 136, 0.2); }
+        .success-screen h2 { color: #00ff88; font-size: 2.2rem; margin-bottom: 15px; text-transform: uppercase; font-family: 'Courier New', Courier, monospace; letter-spacing: 2px;}
+        
+        .code-box {
+            background: #05170f;
+            border: 1px dashed #00ff88;
+            padding: 15px;
+            margin: 25px 0;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 1.2rem;
+            color: #00ff88;
+            font-weight: bold;
+            letter-spacing: 1px;
+            border-radius: 4px;
+        }
     </style>
 </head>
 <body>
@@ -129,9 +143,13 @@
 
         <div class="success-screen" id="success-screen">
             <h2>PROTOCOL VALIDATED</h2>
-            <p>Core Public Health Functions Activated. <br>Your team has successfully matched data to action, ensuring community wellness.</p>
-            <br><br>
-            <div style="font-size: 5rem;">🛡️</div>
+            <p style="color: #fff; margin-bottom: 15px;">Core Public Health Functions Activated. <br>Your team has successfully matched data to action, ensuring community wellness.</p>
+            
+            <div class="code-box">
+                COMPLETION CODE:<br>PH101-PROTOCOL-VALIDATED
+            </div>
+            
+            <div style="font-size: 4rem; margin-top: 15px;">🛡️</div>
         </div>
 
     </div>
@@ -148,7 +166,6 @@
             document.getElementById('input-screen').style.display = 'none';
             document.getElementById('final-challenge').style.display = 'block';
         } else {
-            // Update the alert with non-technical phrasing
             alert("SYNTHESIS INCOMPLETE: One or more function keys are incorrect. Review your community notes.");
         }
     }
@@ -158,9 +175,8 @@
         if (val === 'WELLNESS') {
             document.getElementById('final-challenge').style.display = 'none';
             document.getElementById('success-screen').style.display = 'block';
-            document.body.style.background = "#05170f"; // Success background color
+            document.body.style.background = "#05170f"; // Success background tint
         } else {
-            // Updated alert language
             alert("REVIEWS INCOMPLETE: That is not the overarching goal of the core functions.");
         }
     }
