@@ -105,7 +105,7 @@
     • Access to Care: 92%<br>
     • Chronic Disease Prev: 91%<br>
     • Environmental Quality: 93%<br>
-    • Health Equity Index: 89%</p>
+    • Health Access Index: 89%</p>
     <p style="font-size: 0.85rem; color: #8da9c4;">One indicator is currently falling below the community target of 90%.</p>
     <button onclick="closeModal()">CONTINUE</button>
 </div>
@@ -145,9 +145,9 @@
 
     function checkAnswer() {
         const val = document.getElementById('passcode').value.trim().toUpperCase();
-        // They should deduce EQUITY from the 89% score on the tablet.
-        if (val.includes('EQUITY')) {
-            alert("POLICY VERIFIED. \n\nCore Function Key: EQUITY");
+        // They should deduce ACCESS from the 89% score on the tablet.
+        if (val.includes('ACCESS')) {
+            alert("POLICY VERIFIED. \n\nCore Function Key: ACCESS");
             location.href = 'room3.html';
         } else {
             alert("VERIFICATION FAILED: The entered value does not match the community's primary health gap.");
